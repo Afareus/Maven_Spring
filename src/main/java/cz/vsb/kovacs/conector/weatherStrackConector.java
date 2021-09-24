@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import cz.vsb.kovacs.City;
+import cz.vsb.kovacs.austra.dto.WeatherstackDto;
 
 
 public class weatherStrackConector {
@@ -25,7 +26,7 @@ public class weatherStrackConector {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		 ResponseEntity<String> response = template.getForEntity(uri, String.class);
-		 return response.getBody();
+		 ResponseEntity<WeatherstackDto> response = template.getForEntity(uri, WeatherstackDto.class);
+		 return response.getBody().getLocation().getName();
 	}
 }
