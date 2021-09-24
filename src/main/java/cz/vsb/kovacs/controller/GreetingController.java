@@ -8,7 +8,7 @@ public class GreetingController {
 	
 	@RequestMapping("/ahoj")
 	String greeting() {
-		return "ahoj!";
+		return "<b>ahoj!</b>";
 	}
 	
 }
