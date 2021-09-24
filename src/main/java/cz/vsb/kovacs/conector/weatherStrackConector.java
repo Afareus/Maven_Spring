@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import cz.vsb.kovacs.City;
+
 
 public class weatherStrackConector {
 
@@ -15,11 +17,11 @@ public class weatherStrackConector {
 	private static String url = baseUrl+urlParams+apiKey+"&query=";
 	
 	
-	public String getWeatherForCity(String city) {
+	public String getWeatherForCity(City city) {
 		 URI uri = null;
 		 RestTemplate template = new RestTemplate(); 
 		 try {
-			 uri = new URI(url + city); 
+			 uri = new URI(url + city.toString()); 
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
