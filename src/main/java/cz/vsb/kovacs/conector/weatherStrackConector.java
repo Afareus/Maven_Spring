@@ -18,7 +18,7 @@ public class weatherStrackConector {
 	private static String url = baseUrl+urlParams+apiKey+"&query=";
 	
 	
-	public String getWeatherForCity(City city) {
+	public WeatherstackDto getWeatherForCity(City city) {
 		 URI uri = null;
 		 RestTemplate template = new RestTemplate(); 
 		 try {
@@ -27,6 +27,6 @@ public class weatherStrackConector {
 			e.printStackTrace();
 		}
 		 ResponseEntity<WeatherstackDto> response = template.getForEntity(uri, WeatherstackDto.class);
-		 return response.getBody().getLocation().getName();
+		 return response.getBody();
 	}
 }
