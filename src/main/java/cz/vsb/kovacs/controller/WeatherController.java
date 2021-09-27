@@ -1,5 +1,9 @@
 package cz.vsb.kovacs.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +17,15 @@ import cz.vsb.kovacs.service.WeatherService;
 public class WeatherController {
 	
 	@RequestMapping("/weather")
-	public String getWeather() {
-		return "Pocaci pro vsechna mesta";
+	public List<WeatherDto> getWeather() {
+		List<WeatherDto> list = new ArrayList<WeatherDto>();
+		WeatherService ws = new WeatherService();
+		
+		for (City city: City.values()) {
+			list.add(ws.getWeatherForCity(city));
+		}
+		return list;
+		
 	}
 	
 	@RequestMapping("/weather/{city}")                               // to co je ve složených závorkách je proměnná 
