@@ -16,9 +16,14 @@ import cz.vsb.kovacs.conector.weatherStrackConector;
 public class WeatherService {
 
 	public WeatherDto getWeatherForCity(City cityEnum) {
-		WeatherDto wdto = new WeatherDto();
 		weatherStrackConector con = new weatherStrackConector();
-		wdto.setLocation(con.getWeatherForCity(cityEnum));
+		String loc = con.getWeatherForCity(cityEnum);
+		return transformDto(loc);
+	}
+
+	private WeatherDto transformDto(String loc) {
+		WeatherDto wdto = new WeatherDto();
+		wdto.setLocation(loc);
 		return wdto;
 	}
 }
