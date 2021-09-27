@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class WeatherController {
 		
 	}
 	
+	@CrossOrigin
 	@RequestMapping("/weather/{city}")                               // to co je ve složených závorkách je proměnná 
 	public WeatherDto getWeatherForCity(@PathVariable String city) {
 		City cityEnum = City.valueOf(city.toUpperCase());
